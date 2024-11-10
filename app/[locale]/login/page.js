@@ -112,20 +112,23 @@ export default function LoginPage() {
             </Button>
           </div>
 
-          <div className="text-center">
+          <div className="text-center" style={{ marginBottom: "16px" }}>
             <a
               href="#"
               className="text-sm text-black font-medium"
               style={{ fontSize: "16px" }}
+              onClick={(e) => {
+                e.preventDefault();
+                toast.error("Feature currently unavailable.");
+              }}
             >
               Forgot password?
             </a>
           </div>
         </form>
-
-        <div className="mt-8 text-center text-sm text-gray-500">
-          Binary Forge © 2024 - Admin Panel
-        </div>
+      </div>
+      <div className="text-center mt-auto text-sm text-white py-4 absolute bottom-0 left-0 right-0">
+        Binary Forge © 2024 - Admin Panel
       </div>
     </div>
   );
