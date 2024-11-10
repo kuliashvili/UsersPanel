@@ -1,11 +1,11 @@
-export default function Button({ children, className = '', ...props }) {
-    return (
-      <button
-        className={`px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 
-          transition-colors duration-200 disabled:bg-blue-300 ${className}`}
-        {...props}
-      >
-        {children}
-      </button>
-    )
-  }
+export default function Button({ children, className = "", ...props }) {
+  return (
+    <button
+      className={`w-[140px] h-[40px] text-[16px] bg-[#C9B500] text-white rounded-full hover:bg-[#A8A100] 
+        transition-colors duration-200 disabled:bg-[#D0D000] ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
