@@ -1,6 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import homeIcon from "@/public/images/house.svg";
+import Image from "next/image";
+import Button from "@/components/ui/button";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -14,6 +17,18 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
+      <div className="flex items-center text-[#6B6E7F] text-xl">
+        <span>Analytics</span>
+        <span className="mx-3 text-gray-300">|</span>
+        <div className="flex items-center gap-2">
+          <Image src={homeIcon} alt="Home" width={18} height={18} />
+          <span className="mx-1">•</span>
+
+          <span>Dashboard</span>
+          <span className="mx-1">•</span>
+          <span>Analytics</span>
+        </div>
+      </div>
       <div className="bg-white rounded-lg shadow p-6">
         <h2 className="text-2xl font-semibold mb-4">
           Welcome to Binary Forge Admin Panel
@@ -23,12 +38,9 @@ export default function DashboardPage() {
           handle invoices.
         </p>
 
-        <button
-          onClick={handleLogout}
-          className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
-        >
+        <Button onClick={handleLogout} className="mt-4">
           Logout
-        </button>
+        </Button>
       </div>
     </div>
   );

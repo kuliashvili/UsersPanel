@@ -28,7 +28,6 @@ export default function DashboardLayout({ children }) {
     }
   }, []);
 
-
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow z-10 relative">
@@ -149,7 +148,7 @@ export default function DashboardLayout({ children }) {
           </nav>
         </aside>
 
-        <main className="flex-1 p-8">{children}</main>
+        <main className="flex-1 p-4">{children}</main>
       </div>
     </div>
   );
