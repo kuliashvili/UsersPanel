@@ -1,0 +1,31 @@
+{
+    "login": {
+      "title": "Admin Panel",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Login",
+      "forgot": "Forgot password?",
+      "error": "Invalid email or password"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "users": "Users",
+      "analytics": "Analytics",
+      "invoices": "Invoices"
+    },
+    "users": {
+      "title": "Users Overview",
+      "fullName": "Full Name",
+      "gender": "Gender",
+      "birthday": "Birthday",
+      "status": "Status",
+      "createdDate": "Created Date",
+      "edit": "Edit User",
+      "save": "Save Changes",
+      "cancel": "Cancel"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    }
+  }
