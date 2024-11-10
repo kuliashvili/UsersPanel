@@ -82,7 +82,6 @@ export default function DashboardLayout({ children }) {
       <div className="flex">
         <aside className="w-64 bg-white h-[calc(100vh-5rem)] shadow-sm">
           <nav className="mt-5 px-4 space-y-6">
-            {/* Dashboard Section */}
             <div>
               <h3 className="text-gray-500 text-sm mb-2">Dashboard</h3>
               <Link
@@ -104,7 +103,6 @@ export default function DashboardLayout({ children }) {
               </Link>
             </div>
 
-            {/* Pages Section */}
             <div>
               <h3 className="text-gray-500 text-sm mb-2">Pages</h3>
               <div className="space-y-1">
