@@ -13,12 +13,14 @@ import usersIcon from "@/public/images/users.svg";
 import analyticsIcon from "@/public/images/analytics.svg";
 import enFlag from "@/public/images/en-flag.svg";
 import geFlag from "@/public/images/ge-flag.svg";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function DashboardLayout({ children }) {
   const pathname = usePathname();
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [currentLang, setCurrentLang] = useState("en");
+  const { t, locale } = useTranslation();
 
   useEffect(() => {
     const userCookie = document.cookie
@@ -28,15 +30,17 @@ export default function DashboardLayout({ children }) {
     if (userCookie) {
       setUser(JSON.parse(decodeURIComponent(userCookie.split("=")[1])));
     }
-
-    setCurrentLang(pathname.split("/")[1]);
-  }, [pathname]);
+  }, []);
 
   const toggleLanguage = () => {
     const newLang = currentLang === "en" ? "ka" : "en";
     const newPath = pathname.replace(`/${currentLang}/`, `/${newLang}/`);
     setCurrentLang(newLang);
     router.push(newPath);
+  };
+
+  const getLocalizedPath = (path) => {
+    return path.replace("/en/", `/${locale}/`);
   };
 
   return (
@@ -50,8 +54,10 @@ export default function DashboardLayout({ children }) {
                 height={42}
                 src={Logo}
                 alt="Binary Forge Logo"
-              ></Image>
-              <h1 className="text-xl ml-10 font-semibold">Admin Panel</h1>
+              />
+              <h1 className="text-xl ml-10 font-semibold">
+                {t("dashboard.title")}
+              </h1>
             </div>
 
             {user && (
@@ -79,12 +85,10 @@ export default function DashboardLayout({ children }) {
                 />
                 <button onClick={toggleLanguage} className="ml-9">
                   <Image
-                    src={currentLang === "en" ? enFlag : geFlag}
+                    src={locale === "en" ? enFlag : geFlag}
                     width={25}
                     height={25}
-                    alt={
-                      currentLang === "en" ? "English flag" : "Georgian flag"
-                    }
+                    alt={locale === "en" ? "English flag" : "Georgian flag"}
                   />
                 </button>
               </div>
@@ -97,11 +101,13 @@ export default function DashboardLayout({ children }) {
         <aside className="w-64 bg-white h-[calc(100vh-5rem)] shadow-sm">
           <nav className="mt-5 px-4 space-y-6">
             <div>
-              <h3 className="text-gray-500 text-sm mb-2">Dashboard</h3>
+              <h3 className="text-gray-500 text-sm mb-2">
+                {t("dashboard.dashboard")}
+              </h3>
               <Link
-                href="/en/dashboard"
+                href={getLocalizedPath("/en/dashboard")}
                 className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${
-                  pathname === "/en/dashboard"
+                  pathname === getLocalizedPath("/en/dashboard")
                     ? "bg-[#C9B5001A]"
                     : "hover:bg-gray-50"
                 }`}
@@ -113,17 +119,19 @@ export default function DashboardLayout({ children }) {
                   alt="Analytics Icon"
                   className="mr-3"
                 />
-                Analytics
+                {t("dashboard.analytics")}
               </Link>
             </div>
 
             <div>
-              <h3 className="text-gray-500 text-sm mb-2">Pages</h3>
+              <h3 className="text-gray-500 text-sm mb-2">
+                {t("dashboard.pages")}
+              </h3>
               <div className="space-y-1">
                 <Link
-                  href="/en/dashboard/invoices"
+                  href={getLocalizedPath("/en/dashboard/invoices")}
                   className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${
-                    pathname === "/en/dashboard/invoices"
+                    pathname === getLocalizedPath("/en/dashboard/invoices")
                       ? "bg-[#C9B5001A]"
                       : "hover:bg-gray-50"
                   }`}
@@ -135,13 +143,13 @@ export default function DashboardLayout({ children }) {
                     alt="Invoices Icon"
                     className="mr-3"
                   />
-                  Invoices
+                  {t("dashboard.invoices")}
                 </Link>
 
                 <Link
-                  href="/en/dashboard/users"
+                  href={getLocalizedPath("/en/dashboard/users")}
                   className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${
-                    pathname === "/en/dashboard/users"
+                    pathname === getLocalizedPath("/en/dashboard/users")
                       ? "bg-[#C9B5001A]"
                       : "hover:bg-gray-50"
                   }`}
@@ -153,7 +161,7 @@ export default function DashboardLayout({ children }) {
                     alt="Users Icon"
                     className="mr-3"
                   />
-                  Users
+                  {t("dashboard.users")}
                 </Link>
               </div>
             </div>
