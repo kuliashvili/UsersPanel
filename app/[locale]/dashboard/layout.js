@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Logo from "@/public/images/logo.svg";
 import searchIcon from "@/public/images/search.svg";
@@ -16,7 +16,9 @@ import geFlag from "@/public/images/ge-flag.svg";
 
 export default function DashboardLayout({ children }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [user, setUser] = useState(null);
+  const [currentLang, setCurrentLang] = useState("en");
 
   useEffect(() => {
     const userCookie = document.cookie
@@ -26,7 +28,16 @@ export default function DashboardLayout({ children }) {
     if (userCookie) {
       setUser(JSON.parse(decodeURIComponent(userCookie.split("=")[1])));
     }
-  }, []);
+
+    setCurrentLang(pathname.split("/")[1]);
+  }, [pathname]);
+
+  const toggleLanguage = () => {
+    const newLang = currentLang === "en" ? "ka" : "en";
+    const newPath = pathname.replace(`/${currentLang}/`, `/${newLang}/`);
+    setCurrentLang(newLang);
+    router.push(newPath);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -66,13 +77,16 @@ export default function DashboardLayout({ children }) {
                   alt="Save Icon"
                   className="ml-9"
                 />
-                <Image
-                  src={enFlag}
-                  width={25}
-                  height={25}
-                  alt="English flag"
-                  className="ml-9"
-                />
+                <button onClick={toggleLanguage} className="ml-9">
+                  <Image
+                    src={currentLang === "en" ? enFlag : geFlag}
+                    width={25}
+                    height={25}
+                    alt={
+                      currentLang === "en" ? "English flag" : "Georgian flag"
+                    }
+                  />
+                </button>
               </div>
             )}
           </div>
