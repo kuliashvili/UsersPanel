@@ -8,6 +8,9 @@ import Logo from "@/public/images/logo.svg";
 import searchIcon from "@/public/images/search.svg";
 import ringIcon from "@/public/images/ring.svg";
 import saveIcon from "@/public/images/save.svg";
+import invoicesIcon from "@/public/images/invoices.svg";
+import usersIcon from "@/public/images/users.svg";
+import analyticsIcon from "@/public/images/analytics.svg";
 import enFlag from "@/public/images/en-flag.svg";
 import geFlag from "@/public/images/ge-flag.svg";
 
@@ -25,12 +28,6 @@ export default function DashboardLayout({ children }) {
     }
   }, []);
 
-  const menuItems = [
-    { href: "/en/dashboard", label: "Dashboard", icon: "📊" },
-    { href: "/en/dashboard/users", label: "Users", icon: "👥" },
-    { href: "/en/dashboard/analytics", label: "Analytics", icon: "📈" },
-    { href: "/en/dashboard/invoices", label: "Invoices", icon: "📄" },
-  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -84,25 +81,71 @@ export default function DashboardLayout({ children }) {
       </header>
 
       <div className="flex">
-        <aside className="w-64 bg-white h-[calc(100vh-4rem)] shadow-sm">
-          <nav className="mt-5 px-2">
-            {menuItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
+        <aside className="w-64 bg-white h-[calc(100vh-5rem)] shadow-sm">
+          <nav className="mt-5 px-4 space-y-6">
+            {/* Dashboard Section */}
+            <div>
+              <h3 className="text-gray-500 text-sm mb-2">Dashboard</h3>
+              <Link
+                href="/en/dashboard"
+                className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${
+                  pathname === "/en/dashboard"
+                    ? "bg-[#C9B5001A]"
+                    : "hover:bg-gray-50"
+                }`}
+              >
+                <Image
+                  src={analyticsIcon}
+                  width={20}
+                  height={20}
+                  alt="Analytics Icon"
+                  className="mr-3"
+                />
+                Analytics
+              </Link>
+            </div>
+
+            {/* Pages Section */}
+            <div>
+              <h3 className="text-gray-500 text-sm mb-2">Pages</h3>
+              <div className="space-y-1">
                 <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`flex items-center px-4 py-2 my-1 text-sm font-medium rounded-lg ${
-                    isActive
-                      ? "bg-blue-50 text-blue-700"
-                      : "text-gray-900 hover:bg-gray-50"
+                  href="/en/dashboard/invoices"
+                  className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${
+                    pathname === "/en/dashboard/invoices"
+                      ? "bg-[#C9B5001A]"
+                      : "hover:bg-gray-50"
                   }`}
                 >
-                  <span className="mr-3">{item.icon}</span>
-                  {item.label}
+                  <Image
+                    src={invoicesIcon}
+                    width={20}
+                    height={20}
+                    alt="Invoices Icon"
+                    className="mr-3"
+                  />
+                  Invoices
                 </Link>
-              );
-            })}
+
+                <Link
+                  href="/en/dashboard/users"
+                  className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg ${
+                    pathname === "/en/dashboard/users"
+                      ? "bg-[#C9B5001A]"
+                      : "hover:bg-gray-50"
+                  }`}
+                >
+                  <Image
+                    src={usersIcon}
+                    width={20}
+                    height={20}
+                    alt="Users Icon"
+                    className="mr-3"
+                  />
+                  Users
+                </Link>
+              </div>
+            </div>
           </nav>
         </aside>
 
