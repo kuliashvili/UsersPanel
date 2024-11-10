@@ -16,13 +16,19 @@ export default function LoginPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    if (!formData.username || !formData.password) {
+      toast.error("Please fill in both fields.");
+      setLoading(false);
+      return;
+    }
 
     try {
       const res = await fetch("https://dummyjson.com/auth/login", {
@@ -31,19 +37,18 @@ export default function LoginPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: "emilys",
-          password: "emilyspass",
+          username: formData.username,
+          password: formData.password,
         }),
       });
 
       const data = await res.json();
-      console.log("Login response:", data);
 
       if (data.accessToken) {
         document.cookie = `token=${data.accessToken}; path=/`;
         document.cookie = `user=${JSON.stringify({
           ...data,
-          email: formData.email || "contact@binary-forge.dev",
+          username: formData.username,
         })}; path=/`;
 
         toast.success("Login successful!");
@@ -77,13 +82,13 @@ export default function LoginPage() {
         <form noValidate onSubmit={handleSubmit} className="space-y-6">
           <div>
             <Input
-              type="email"
-              label="Email"
-              value={formData.email}
+              type="text"
+              label="Username"
+              value={formData.username}
               onChange={(e) =>
-                setFormData((prev) => ({ ...prev, email: e.target.value }))
+                setFormData((prev) => ({ ...prev, username: e.target.value }))
               }
-              placeholder="contact@binary-forge.dev"
+              placeholder="john doe"
               icon={PersonIcon}
             />
           </div>
