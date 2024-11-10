@@ -1,75 +1,75 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import { MoreVertical } from 'lucide-react'
+import { useState, useEffect } from "react";
+import { MoreVertical } from "lucide-react";
 
 export default function UsersPage() {
-  const [users, setUsers] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [editingUser, setEditingUser] = useState(null)
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [editingUser, setEditingUser] = useState(null);
 
   useEffect(() => {
-    fetchUsers()
-  }, [])
+    fetchUsers();
+  }, []);
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch('https://dummyjson.com/users')
-      const data = await res.json()
-      
+      const res = await fetch("https://dummyjson.com/users");
+      const data = await res.json();
 
-      const enhancedUsers = data.users.map(user => ({
+      const enhancedUsers = data.users.map((user) => ({
         ...user,
-        status: Math.random() > 0.5 ? 'Active' : 'Inactive',
-        createdDate: '07/20/2022'
-      }))
-      
-      setUsers(enhancedUsers)
+        status: Math.random() > 0.5 ? "Active" : "Inactive",
+        createdDate: "07/20/2022",
+      }));
+
+      setUsers(enhancedUsers);
     } catch (error) {
-      console.error('Error fetching users:', error)
+      console.error("Error fetching users:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      month: '2-digit',
-      day: '2-digit',
-      year: '2-digit'
-    })
-  }
+    return new Date(dateString).toLocaleDateString("en-US", {
+      month: "2-digit",
+      day: "2-digit",
+      year: "2-digit",
+    });
+  };
 
   const handleEditUser = (user) => {
-    setEditingUser(user)
-  }
+    setEditingUser(user);
+  };
 
   const handleUpdateUser = async (updatedData) => {
     try {
       const res = await fetch(`https://dummyjson.com/users/${editingUser.id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(updatedData)
-      })
-      const data = await res.json()
-      
+        body: JSON.stringify(updatedData),
+      });
+      const data = await res.json();
 
-      setUsers(users.map(user => 
-        user.id === editingUser.id 
-          ? { ...user, ...updatedData }
-          : user
-      ))
-      
-      setEditingUser(null)
+      setUsers(
+        users.map((user) =>
+          user.id === editingUser.id ? { ...user, ...updatedData } : user
+        )
+      );
+
+      setEditingUser(null);
     } catch (error) {
-      console.error('Error updating user:', error)
+      console.error("Error updating user:", error);
     }
-  }
+  };
 
   if (loading) {
-    return <div className="flex justify-center items-center h-full">Loading...</div>
+    return (
+      <div className="flex justify-center items-center h-full">Loading...</div>
+    );
   }
 
   return (
@@ -118,18 +118,18 @@ export default function UsersPage() {
                 <td className="px-6 py-4 whitespace-nowrap">
                   {user.firstName} {user.lastName}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {user.gender}
-                </td>
+                <td className="px-6 py-4 whitespace-nowrap">{user.gender}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {formatDate(user.birthDate)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <span className={`px-2 py-1 text-xs rounded-full ${
-                    user.status === 'Active' 
-                      ? 'bg-green-100 text-green-800' 
-                      : 'bg-red-100 text-red-800'
-                  }`}>
+                  <span
+                    className={`px-2 py-1 text-xs rounded-full ${
+                      user.status === "Active"
+                        ? "bg-green-100 text-green-800"
+                        : "bg-red-100 text-red-800"
+                    }`}
+                  >
                     {user.status}
                   </span>
                 </td>
@@ -157,7 +157,9 @@ export default function UsersPage() {
             <h3 className="text-lg font-semibold mb-4">Edit User</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Full Name</label>
+                <label className="block text-sm font-medium mb-1">
+                  Full Name
+                </label>
                 <input
                   type="text"
                   value={`${editingUser.firstName} ${editingUser.lastName}`}
@@ -166,7 +168,7 @@ export default function UsersPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">Gender</label>
-                <select 
+                <select
                   value={editingUser.gender}
                   className="w-full px-3 py-2 border rounded-lg"
                 >
@@ -176,7 +178,7 @@ export default function UsersPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1">Status</label>
-                <select 
+                <select
                   value={editingUser.status}
                   className="w-full px-3 py-2 border rounded-lg"
                 >
@@ -203,5 +205,5 @@ export default function UsersPage() {
         </div>
       )}
     </div>
-  )
+  );
 }

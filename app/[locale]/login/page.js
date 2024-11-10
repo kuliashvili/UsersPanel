@@ -32,8 +32,7 @@ export default function LoginPage() {
       console.log("Login response:", data);
 
       if (data.accessToken) {
-
-        document.cookie = `token=${data.accessToken}; path=/`; 
+        document.cookie = `token=${data.accessToken}; path=/`;
         document.cookie = `user=${JSON.stringify({
           ...data,
           email: formData.email || "contact@binary-forge.dev",
