@@ -3,6 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import Logo from "@/public/images/logo.svg";
+import searchIcon from "@/public/images/search.svg";
+import ringIcon from "@/public/images/ring.svg";
+import saveIcon from "@/public/images/save.svg";
+import enFlag from "@/public/images/en-flag.svg";
+import geFlag from "@/public/images/ge-flag.svg";
 
 export default function DashboardLayout({ children }) {
   const pathname = usePathname();
@@ -29,17 +36,47 @@ export default function DashboardLayout({ children }) {
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow z-10 relative">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
-              <h1 className="text-2xl font-semibold">Binary Forge</h1>
+              <Image
+                width={190}
+                height={42}
+                src={Logo}
+                alt="Binary Forge Logo"
+              ></Image>
+              <h1 className="text-xl ml-10 font-semibold">Admin Panel</h1>
             </div>
 
             {user && (
               <div className="flex items-center space-x-4">
-                <span className="text-sm font-medium">
-                  {user.firstName} {user.lastName}
-                </span>
-                <span className="text-sm text-gray-500">{user.email}</span>
+                <Image
+                  src={searchIcon}
+                  width={25}
+                  height={25}
+                  alt="Search Icon"
+                  className="ml-9"
+                />
+                <Image
+                  src={ringIcon}
+                  width={25}
+                  height={25}
+                  alt="Ring Icon"
+                  className="ml-9"
+                />
+                <Image
+                  src={saveIcon}
+                  width={20}
+                  height={20}
+                  alt="Save Icon"
+                  className="ml-9"
+                />
+                <Image
+                  src={enFlag}
+                  width={25}
+                  height={25}
+                  alt="English flag"
+                  className="ml-9"
+                />
               </div>
             )}
           </div>
