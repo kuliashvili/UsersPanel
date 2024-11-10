@@ -8,6 +8,7 @@ import Logo from "../../../public/images/logo.svg";
 import background from "../../../public/images/background.png";
 import PersonIcon from "../../../public/images/person.svg";
 import LockerIcon from "../../../public/images/locker.svg";
+import EyeIcon from "../../../public/images/eye.svg";
 import Button from "@/components/ui/button";
 import Input from "@/components/ui/input";
 
@@ -83,7 +84,7 @@ export default function LoginPage() {
                 setFormData((prev) => ({ ...prev, email: e.target.value }))
               }
               placeholder="contact@binary-forge.dev"
-              icon={PersonIcon} 
+              icon={PersonIcon}
             />
           </div>
 
@@ -95,7 +96,7 @@ export default function LoginPage() {
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, password: e.target.value }))
               }
-              placeholder="********"
+              placeholder="******"
               icon={LockerIcon}
             />
           </div>
@@ -107,7 +108,11 @@ export default function LoginPage() {
           </div>
 
           <div className="text-center">
-            <a href="#" className="text-sm text-blue-600 hover:text-blue-700">
+            <a
+              href="#"
+              className="text-sm text-black font-medium"
+              style={{ fontSize: "16px" }}
+            >
               Forgot password?
             </a>
           </div>
