@@ -74,7 +74,7 @@ export default function LoginPage() {
         </div>
         <h2 className="text-2xl font-semibold text-center mb-8">Admin Panel</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form noValidate onSubmit={handleSubmit} className="space-y-6">
           <div>
             <Input
               type="email"
