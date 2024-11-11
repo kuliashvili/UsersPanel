@@ -1,10 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { MoreVertical } from "lucide-react";
+import { MoreVertical, Plus } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import Image from "next/image";
 import homeIcon from "@/public/images/house.svg";
+import SearchIcon from "@/public/images/search.svg";
+import PlusIcon from "@/public/images/plus.svg";
+import FilterIcon from "@/public/images/filter.svg";
 
 export default function UsersPage() {
   const { t } = useTranslation();
@@ -94,19 +97,48 @@ export default function UsersPage() {
       </div>
 
       <div className="bg-white rounded-lg shadow">
-        <div className="px-6 py-4 border-b">
+        <div
+          className="px-6 py-4 border-b"
+          style={{ backgroundColor: "#C9B5001A" }}
+        >
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold">
-              {t("table.usersOverview")}
-            </h2>
+            <div className="flex items-center" style={{ color: "#6B6E7F" }}>
+              <h2 className="text-xl font-semibold">
+                {t("table.usersOverview")}
+              </h2>
+              <p className="ml-4 text-xs">{t("table.Overview")}</p>{" "}
+              <div className="relative ml-8">
+                <input
+                  type="text"
+                  placeholder={t("table.search")}
+                  className="pl-10 pr-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none text-sm rounded-[15px] w-full"
+                />
+                <Image
+                  src={SearchIcon}
+                  alt="Search Icon"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2"
+                  width={14}
+                  height={14}
+                />
+              </div>
+            </div>
+
             <div className="flex items-center space-x-4">
-              <input
-                type="text"
-                placeholder={t("table.search")}
-                className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                {t("table.addUser")}
+              <button className=" text-white w-10 h-10 rounded-full flex items-center justify-center">
+                <Image
+                  src={FilterIcon}
+                  alt="Filter Icon"
+                  width={20}
+                  height={20}
+                />
+              </button>
+              <button className="bg-[#C9B500] text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#B89A00]">
+                <Image
+                  src={PlusIcon}
+                  alt="Add User Icon"
+                  width={20}
+                  height={20}
+                />
               </button>
             </div>
           </div>

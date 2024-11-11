@@ -29,7 +29,8 @@ export const translations = {
       invoices: "Invoices",
     },
     table: {
-      usersOverview: "Users Overview",
+      usersOverview: "Users",
+      Overview: "Overview",
       search: "Search...",
       addUser: "Add User",
       fullName: "Full Name",
@@ -77,7 +78,8 @@ export const translations = {
       invoices: "ინვოისები",
     },
     table: {
-      usersOverview: "მომხმარებლების მიმოხილვა",
+      usersOverview: "მომხმარებლის",
+      Overview: "მიმოხილვა",
       search: "ძიება...",
       addUser: "მომხმარებლის დამატება",
       fullName: "სრული სახელი",
