@@ -8,6 +8,7 @@ import homeIcon from "@/public/images/house.svg";
 import SearchIcon from "@/public/images/search.svg";
 import PlusIcon from "@/public/images/plus.svg";
 import FilterIcon from "@/public/images/filter.svg";
+import ArrowIcon from "@/public/images/arrow.svg";
 
 export default function UsersPage() {
   const { t } = useTranslation();
@@ -148,22 +149,67 @@ export default function UsersPage() {
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  {t("table.fullName")}
+                <th className="px-6 py-3 text-left text-base text-[#6B6E7F] font-semibold">
+                  <div className="flex items-center">
+                    {t("table.fullName")}
+                    <Image
+                      src={ArrowIcon}
+                      alt="Sort"
+                      width={16}
+                      height={16}
+                      className="ml-2.5"
+                    />
+                  </div>
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  {t("table.gender")}
+                <th className="px-6 py-3 text-left text-base text-[#6B6E7F] font-semibold">
+                  <div className="flex items-center">
+                    {t("table.gender")}
+                    <Image
+                      src={ArrowIcon}
+                      alt="Sort"
+                      width={16}
+                      height={16}
+                      className="ml-2.5"
+                    />
+                  </div>
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  {t("table.birthday")}
+                <th className="px-6 py-3 text-left text-base text-[#6B6E7F] font-semibold">
+                  <div className="flex items-center">
+                    {t("table.birthday")}
+                    <Image
+                      src={ArrowIcon}
+                      alt="Sort"
+                      width={16}
+                      height={16}
+                      className="ml-2.5"
+                    />
+                  </div>
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  {t("table.status")}
+                <th className="px-6 py-3 text-left text-base text-[#6B6E7F] font-semibold">
+                  <div className="flex items-center">
+                    {t("table.status")}
+                    <Image
+                      src={ArrowIcon}
+                      alt="Sort"
+                      width={16}
+                      height={16}
+                      className="ml-2.5"
+                    />
+                  </div>
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  {t("table.createdDate")}
+                <th className="px-6 py-3 text-left text-base text-[#6B6E7F] font-semibold">
+                  <div className="flex items-center">
+                    {t("table.createdDate")}
+                    <Image
+                      src={ArrowIcon}
+                      alt="Sort"
+                      width={16}
+                      height={16}
+                      className="ml-2.5"
+                    />
+                  </div>
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"></th>
+                <th className="px-6 py-3 text-left text-base text-[#6B6E7F] font-semibold"></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
