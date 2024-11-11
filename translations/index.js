@@ -1,6 +1,13 @@
 export const translations = {
   en: {
     loading: "Loading",
+    invoices: {
+      title: "Invoices",
+      overview: "Overview",
+      noInvoices: "No Invoices Found",
+      noInvoicesDescription:
+        "Looks like there are no invoices yet. Create your first invoice to get started.",
+    },
     auth: {
       email: "Email",
       password: "Password",
@@ -58,6 +65,13 @@ export const translations = {
       forgotPassword: "დაგავიწყდა პაროლი?",
       loginSuccess: "წარმატებით შეხვედით!",
       loginFailed: "შესვლა ვერ მოხერხდა. სცადეთ ხელახლა.",
+    },
+    invoices: {
+      title: "ინვოისები",
+      overview: "მიმოხილვა",
+      noInvoices: "ინვოისები ვერ მოიძებნა",
+      noInvoicesDescription:
+        "ჯერჯერობით ინვოისები არ არის. დაიწყეთ პირველი ინვოისის შექმნით.",
     },
     dashboard: {
       title: "ადმინ პანელი",
