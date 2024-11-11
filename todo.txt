@@ -1,5 +1,2 @@
-daamate yvela gverdze translatable keywords
 loginze daamate language switcher
 code gaalamaze gaasuftave
-user modify panel have a look, UI and functionality
-check routes
