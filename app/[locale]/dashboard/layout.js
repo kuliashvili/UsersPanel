@@ -33,8 +33,8 @@ export default function DashboardLayout({ children }) {
   }, []);
 
   const toggleLanguage = () => {
-    const newLang = currentLang === "en" ? "ka" : "en";
-    const newPath = pathname.replace(`/${currentLang}/`, `/${newLang}/`);
+    const newLang = locale === "en" ? "ka" : "en";
+    const newPath = pathname.replace(`/${locale}/`, `/${newLang}/`);
     setCurrentLang(newLang);
     router.push(newPath);
   };
