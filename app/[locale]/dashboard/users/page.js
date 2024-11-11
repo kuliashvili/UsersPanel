@@ -9,6 +9,7 @@ import SearchIcon from "@/public/images/search.svg";
 import PlusIcon from "@/public/images/plus.svg";
 import FilterIcon from "@/public/images/filter.svg";
 import ArrowIcon from "@/public/images/arrow.svg";
+import Button from "@/components/ui/button";
 
 export default function UsersPage() {
   const { t } = useTranslation();
@@ -253,61 +254,142 @@ export default function UsersPage() {
         </div>
 
         {/* Edit User Modal */}
+        {/* Edit User Modal */}
+        {/* Edit User Modal */}
         {editingUser && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <div className="bg-white rounded-lg p-6 w-full max-w-md">
-              <h3 className="text-lg font-semibold mb-4">
-                {t("table.editUser")}
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    {t("table.fullName")}
-                  </label>
-                  <input
-                    type="text"
-                    value={`${editingUser.firstName} ${editingUser.lastName}`}
-                    className="w-full px-3 py-2 border rounded-lg"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    {t("table.gender")}
-                  </label>
-                  <select
-                    value={editingUser.gender}
-                    className="w-full px-3 py-2 border rounded-lg"
-                  >
-                    <option value="male">{t("table.male")}</option>
-                    <option value="female">{t("table.female")}</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    {t("table.status")}
-                  </label>
-                  <select
-                    value={editingUser.status}
-                    className="w-full px-3 py-2 border rounded-lg"
-                  >
-                    <option value="Active">{t("table.active")}</option>
-                    <option value="Inactive">{t("table.inactive")}</option>
-                  </select>
-                </div>
-              </div>
-              <div className="mt-6 flex justify-end space-x-3">
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-8 w-full max-w-[540px]">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-xl font-semibold text-[#6B6E7F]">
+                  {t("modal.title")}
+                </h3>
                 <button
                   onClick={() => setEditingUser(null)}
-                  className="px-4 py-2 border rounded-lg"
+                  className="text-gray-400 hover:text-gray-500"
                 >
-                  {t("table.cancel")}
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 1L13 13M1 13L13 1"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
                 </button>
-                <button
+              </div>
+
+              <div className="space-y-6">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm text-[#6B6E7F] mb-2">
+                      {t("modal.fullName")}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder={t("modal.fullNamePlaceholder")}
+                      value={`${editingUser.firstName} ${editingUser.lastName}`}
+                      onChange={(e) => {
+                        const [firstName, ...lastNameParts] =
+                          e.target.value.split(" ");
+                        setEditingUser({
+                          ...editingUser,
+                          firstName,
+                          lastName: lastNameParts.join(" ") || "",
+                        });
+                      }}
+                      className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C9B500]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-[#6B6E7F] mb-2">
+                      {t("modal.gender")}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder={t("modal.genderPlaceholder")}
+                      value={editingUser.gender}
+                      onChange={(e) =>
+                        setEditingUser({
+                          ...editingUser,
+                          gender: e.target.value,
+                        })
+                      }
+                      className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C9B500]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm text-[#6B6E7F] mb-2">
+                      {t("modal.birthday")}
+                    </label>
+                    <input
+                      type="text"
+                      placeholder={t("modal.birthdayPlaceholder")}
+                      value={editingUser.birthDate}
+                      onChange={(e) =>
+                        setEditingUser({
+                          ...editingUser,
+                          birthDate: e.target.value,
+                        })
+                      }
+                      className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C9B500]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-[#6B6E7F] mb-2">
+                      {t("modal.status")}
+                    </label>
+                    <div className="relative">
+                      <select
+                        value={editingUser.status}
+                        onChange={(e) =>
+                          setEditingUser({
+                            ...editingUser,
+                            status: e.target.value,
+                          })
+                        }
+                        className="w-full px-4 py-2 border border-[#D9D9D9] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C9B500] appearance-none bg-white"
+                      >
+                        <option value="Active">{t("modal.active")}</option>
+                        <option value="Inactive">{t("modal.inactive")}</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                        <svg
+                          width="10"
+                          height="6"
+                          viewBox="0 0 10 6"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M1 1L5 5L9 1"
+                            stroke="#6B6E7F"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 flex justify-end">
+                <Button
                   onClick={() => handleUpdateUser(editingUser)}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg"
+                  className="bg-[#C9B500] text-white hover:bg-[#B89A00]"
                 >
-                  {t("table.saveChanges")}
-                </button>
+                  {t("modal.add")}
+                </Button>
               </div>
             </div>
           </div>

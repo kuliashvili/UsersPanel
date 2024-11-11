@@ -1,6 +1,19 @@
 export const translations = {
   en: {
     loading: "Loading",
+    modal: {
+      title: "User",
+      fullName: "Full Name",
+      fullNamePlaceholder: "Full Name",
+      gender: "Gender",
+      genderPlaceholder: "Gender",
+      birthday: "Birthday",
+      birthdayPlaceholder: "Birthday",
+      status: "Status",
+      active: "Active",
+      inactive: "Inactive",
+      add: "Add",
+    },
     invoices: {
       title: "Invoices",
       overview: "Overview",
@@ -57,6 +70,19 @@ export const translations = {
   },
   ka: {
     loading: "იტვირთება",
+    modal: {
+      title: "მომხმარებელი",
+      fullName: "სრული სახელი",
+      fullNamePlaceholder: "სრული სახელი",
+      gender: "სქესი",
+      genderPlaceholder: "სქესი",
+      birthday: "დაბადების თარიღი",
+      birthdayPlaceholder: "დაბადების თარიღი",
+      status: "სტატუსი",
+      active: "აქტიური",
+      inactive: "არააქტიური",
+      add: "დამატება",
+    },
     auth: {
       email: "ელ-ფოსტა",
       password: "პაროლი",
