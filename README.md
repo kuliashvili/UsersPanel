@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Admin Dashboard with DummyJSON API
 
-## Getting Started
+A simple admin dashboard built with Next.js and Tailwind CSS. Features user management, English/Georgian language switching, and modern UI components.
 
-First, run the development server:
+##  Demo Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* Login system with DummyJSON API
+* Switch between English and Georgian languages 
+* User management table with edit functionality
+* Toast notifications for actions
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+##  Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+* `Next.js`
+* `Tailwind CSS`
+* `React Hot Toast`
+* `next-intl`
+* `DummyJSON API`
+* `Lucide React`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+##  Main Features
 
-To learn more about Next.js, take a look at the following resources:
+ **Auth System**
+- Login with DummyJSON users
+- Logout functionality
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+ **User Management**
+- View all users in a table
+- Edit user details (name, gender, status)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ **Languages**
+- Toggle between English/Georgian
+- Remembers language preference
 
-## Deploy on Vercel
+##  Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Changes to users are not permanent (using mock API)
+- Demo credentials:
+  * Username: `emilys`
+  * Password: `emilyspass`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📸 Preview
+
+![image](https://github.com/user-attachments/assets/bfc81927-8b24-4849-99ef-05455ec742b1)
+![image](https://github.com/user-attachments/assets/f4ea48af-a34a-4f35-9416-85dbacf1f9be)
+
+
+
+## Special Features
+
+- Custom input & button components
+- Toast notifications
+- SVG icon integration
+
+
+
+---
+Made with ❤️ by Giorgi Kuliashvili
+
