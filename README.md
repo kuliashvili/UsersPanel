@@ -54,6 +54,7 @@ A simple admin dashboard built with Next.js and Tailwind CSS. Features user mana
 - SVG icon integration
 
 
+## Dummyjson users list: https://dummyjson.com/users
 
 ---
 Made with ❤️ by Giorgi Kuliashvili
